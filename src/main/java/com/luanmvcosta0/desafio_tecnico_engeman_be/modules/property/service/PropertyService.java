@@ -6,6 +6,8 @@ import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.repository.P
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PropertyService {
@@ -20,6 +22,10 @@ public class PropertyService {
         entity.setType(dto.getType());
 
         return propertyRepository.save(entity);
+    }
+
+    public List<PropertyEntity> findAll() {
+        return propertyRepository.findAll();
     }
 
 }
