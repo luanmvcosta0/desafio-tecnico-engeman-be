@@ -1,6 +1,6 @@
-package com.luanmvcosta0.desafio_tecnico_engeman_be.model;
+package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.model;
 
-import com.luanmvcosta0.desafio_tecnico_engeman_be.enums.Type;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.enums.Type;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Property {
+public class PropertyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
