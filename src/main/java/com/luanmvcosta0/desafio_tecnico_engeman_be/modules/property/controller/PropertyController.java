@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/property")
 @RequiredArgsConstructor
@@ -19,6 +21,12 @@ public class PropertyController {
     @ResponseStatus(HttpStatus.CREATED)
     public PropertyEntity create(@RequestBody @Valid PropertyDto dto) {
         return propertyService.create(dto);
+    }
+
+    @GetMapping("/")
+    @ResponseStatus(HttpStatus.OK)
+    public List<PropertyEntity> findAll() {
+        return propertyService.findAll();
     }
 
 }
