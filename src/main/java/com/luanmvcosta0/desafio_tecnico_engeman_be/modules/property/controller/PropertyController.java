@@ -41,4 +41,10 @@ public class PropertyController {
         return propertyService.update(id, dto);
     }
 
+    @PatchMapping("/{id}/toggle-active")
+    @ResponseStatus(HttpStatus.OK)
+    public PropertyEntity toggleActive(@PathVariable String id) {
+        return propertyService.toggleActive(id);
+    }
+
 }

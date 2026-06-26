@@ -47,4 +47,13 @@ public class PropertyService {
         return propertyRepository.save(property);
     }
 
+    public PropertyEntity toggleActive(String id) {
+        PropertyEntity property = propertyRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Propriedade não encontrada pelo id: " + id));
+
+        property.setActive(!property.getActive());
+
+        return propertyRepository.save(property);
+    }
+
 }
