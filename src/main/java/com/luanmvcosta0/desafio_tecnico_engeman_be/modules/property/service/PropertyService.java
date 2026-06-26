@@ -35,4 +35,16 @@ public class PropertyService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    public PropertyEntity update(String id, PropertyDto dto) {
+        PropertyEntity property = propertyRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Propriedade não encontrada pelo id: " + id));
+
+        property.setName(dto.getName());
+        property.setRooms(dto.getRooms());
+        property.setPrice(dto.getPrice());
+        property.setType(dto.getType());
+
+        return propertyRepository.save(property);
+    }
+
 }

@@ -35,4 +35,10 @@ public class PropertyController {
         return propertyService.findByName(name);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public PropertyEntity update(@PathVariable String id, @Valid @RequestBody PropertyDto dto) {
+        return propertyService.update(id, dto);
+    }
+
 }
