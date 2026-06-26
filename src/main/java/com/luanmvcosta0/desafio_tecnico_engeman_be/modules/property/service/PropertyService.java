@@ -4,7 +4,9 @@ import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.dtos.Propert
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.model.PropertyEntity;
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.repository.PropertyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,6 +28,11 @@ public class PropertyService {
 
     public List<PropertyEntity> findAll() {
         return propertyRepository.findAll();
+    }
+
+    public PropertyEntity findByName(String name) {
+        return propertyRepository.findByNameContainingIgnoreCase(name)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 }

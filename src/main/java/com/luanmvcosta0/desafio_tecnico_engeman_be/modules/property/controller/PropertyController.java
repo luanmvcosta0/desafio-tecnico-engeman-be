@@ -29,4 +29,10 @@ public class PropertyController {
         return propertyService.findAll();
     }
 
+    @GetMapping("/search")
+    @ResponseStatus(HttpStatus.OK)
+    public PropertyEntity findByName(@RequestParam String name) {
+        return propertyService.findByName(name);
+    }
+
 }
