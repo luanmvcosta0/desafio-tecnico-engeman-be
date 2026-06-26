@@ -1,9 +1,12 @@
 package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.controller;
 
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.dtos.PropertyDto;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.model.PropertyEntity;
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.service.PropertyService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/property")
@@ -11,5 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PropertyController {
 
     private final PropertyService propertyService;
+
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public PropertyEntity create(@RequestBody @Valid PropertyDto dto) {
+        return propertyService.create(dto);
+    }
 
 }
