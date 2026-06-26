@@ -1,6 +1,6 @@
-package com.luanmvcosta0.desafio_tecnico_engeman_be.model;
+package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.model;
 
-import com.luanmvcosta0.desafio_tecnico_engeman_be.enums.Role;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

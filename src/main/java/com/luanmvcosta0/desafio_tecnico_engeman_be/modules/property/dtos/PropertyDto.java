@@ -1,6 +1,6 @@
-package com.luanmvcosta0.desafio_tecnico_engeman_be.dtos;
+package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.dtos;
 
-import com.luanmvcosta0.desafio_tecnico_engeman_be.enums.Type;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.enums.Type;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
