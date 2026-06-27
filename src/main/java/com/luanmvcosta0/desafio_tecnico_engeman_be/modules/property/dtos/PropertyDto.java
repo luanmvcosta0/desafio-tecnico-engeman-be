@@ -1,10 +1,7 @@
 package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.dtos;
 
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.enums.Type;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +22,7 @@ public class PropertyDto {
 
     @NotNull
     @DecimalMin(value = "0.01")
+    @Positive
     private BigDecimal price;
 
     @NotNull

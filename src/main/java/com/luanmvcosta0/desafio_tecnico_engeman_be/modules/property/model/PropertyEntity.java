@@ -32,4 +32,7 @@ public class PropertyEntity {
     @Column(name = "type")
     private Type type;
 
+    @Column(name = "active")
+    private Boolean active = true;
+
 }
