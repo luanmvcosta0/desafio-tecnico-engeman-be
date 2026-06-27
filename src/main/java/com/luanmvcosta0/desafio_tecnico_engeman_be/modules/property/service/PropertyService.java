@@ -4,6 +4,8 @@ import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.dtos.Propert
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.model.PropertyEntity;
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.repository.PropertyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,8 +28,8 @@ public class PropertyService {
         return propertyRepository.save(entity);
     }
 
-    public List<PropertyEntity> findAll() {
-        return propertyRepository.findAll();
+    public Page<PropertyEntity> findAll(Pageable pageable) {
+        return propertyRepository.findAll(pageable);
     }
 
     public PropertyEntity findByName(String name) {
