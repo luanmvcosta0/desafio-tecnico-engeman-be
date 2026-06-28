@@ -22,7 +22,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @Operation(summary = "Criar conta", description = "Cria um novo usuário. O papel (role) pode ser BROKER ou CUSTOMER — se for o primeiro cadastro do sistema, o usuário vira ADMIN automaticamente.")
+    @Operation(summary = "Criar conta", description = "Cria um novo usuário. O papel (role) pode ser BROKER ou CUSTOMER, se for o primeiro cadastro do sistema, o usuário vira ADMIN automaticamente")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Conta criada, retorna username e email"),
             @ApiResponse(responseCode = "400", description = "Algum campo inválido ou faltando"),
@@ -34,7 +34,7 @@ public class AuthController {
         return authService.register(dto);
     }
 
-    @Operation(summary = "Entrar", description = "Autentica com email e senha. Retorna um token JWT para usar nas próximas requisições.")
+    @Operation(summary = "Entrar", description = "Autentica com email e senha")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Login ok, retorna o token JWT"),
             @ApiResponse(responseCode = "400", description = "Email ou senha inválidos"),
