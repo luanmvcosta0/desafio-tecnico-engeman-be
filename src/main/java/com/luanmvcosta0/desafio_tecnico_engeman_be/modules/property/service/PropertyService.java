@@ -19,13 +19,13 @@ public class PropertyService {
     private final PropertyRepository propertyRepository;
 
     public PropertyEntity create(PropertyDto dto) {
-        PropertyEntity entity = new PropertyEntity();
-        entity.setName(dto.getName());
-        entity.setRooms(dto.getRooms());
-        entity.setPrice(dto.getPrice());
-        entity.setType(dto.getType());
+        PropertyEntity property = new PropertyEntity();
+        property.setName(dto.getName());
+        property.setRooms(dto.getRooms());
+        property.setPrice(dto.getPrice());
+        property.setType(dto.getType());
 
-        return propertyRepository.save(entity);
+        return propertyRepository.save(property);
     }
 
     public Page<PropertyEntity> findAll(Pageable pageable) {
