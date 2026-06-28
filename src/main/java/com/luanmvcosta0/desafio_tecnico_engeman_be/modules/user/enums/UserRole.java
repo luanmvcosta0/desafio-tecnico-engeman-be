@@ -1,6 +1,6 @@
 package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.enums;
 
-public enum Role {
+public enum UserRole {
     ADMIN,
     BROKER,
     CUSTOMER
