@@ -1,4 +1,4 @@
-package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.auth.dtos.request;
+package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.dtos.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

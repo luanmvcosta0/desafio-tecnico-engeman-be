@@ -1,4 +1,4 @@
-package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.auth.dtos.request;
+package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.dtos.request;
 
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.enums.UserRole;
 import jakarta.validation.constraints.Email;
