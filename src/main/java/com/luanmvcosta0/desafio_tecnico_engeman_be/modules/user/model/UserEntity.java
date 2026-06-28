@@ -1,6 +1,6 @@
 package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.model;
 
-import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.enums.Role;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.user.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +25,6 @@ public class UserEntity {
     private String password;
 
     @Column(name = "role")
-    private Role role;
+    private UserRole role;
 
 }
