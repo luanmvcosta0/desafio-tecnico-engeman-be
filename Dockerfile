@@ -8,6 +8,10 @@ FROM deps AS dev
 COPY src/ src/
 CMD ["./mvnw", "spring-boot:run"]
 
+FROM deps AS test
+COPY src/ src/
+RUN ./mvnw test
+
 FROM deps AS build
 COPY src/ src/
 RUN ./mvnw package -DskipTests -q
