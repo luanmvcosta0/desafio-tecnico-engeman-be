@@ -42,7 +42,7 @@ public class AuthService {
 
         userRepository.save(user);
 
-        return new UserRegisterResponseDto(user.getUsername(), user.getEmail());
+        return new UserRegisterResponseDto(dto.username(), user.getEmail());
     }
 
     public UserLoginResponseDto login(UserLoginRequestDto dto) {
