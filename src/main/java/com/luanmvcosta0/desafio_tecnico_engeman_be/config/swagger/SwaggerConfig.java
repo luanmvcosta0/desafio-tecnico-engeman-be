@@ -1,4 +1,4 @@
-package com.luanmvcosta0.desafio_tecnico_engeman_be.swagger;
+package com.luanmvcosta0.desafio_tecnico_engeman_be.config.swagger;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
