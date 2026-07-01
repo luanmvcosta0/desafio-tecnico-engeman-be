@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -76,9 +77,9 @@ class PropertyServiceTest {
     void findAll_shouldReturnPageOfProperties() {
         PageRequest pageable = PageRequest.of(0, 10);
         Page<PropertyEntity> page = new PageImpl<>(List.of(entity), pageable, 1);
-        when(propertyRepository.findAll(pageable)).thenReturn(page);
+        when(propertyRepository.findAll(any(Specification.class), any(PageRequest.class))).thenReturn(page);
 
-        Page<PropertyEntity> result = propertyService.findAll(pageable);
+        Page<PropertyEntity> result = propertyService.findAll(null, null, null, null, null, pageable);
 
         assertThat(result.getContent()).hasSize(1);
         assertThat(result.getContent().get(0).getName()).isEqualTo("Casa Teste");
