@@ -150,7 +150,7 @@ class PropertyControllerTest {
     @WithMockUser(roles = "CUSTOMER")
     void findAll_shouldReturn200AndPage_whenCustomerRole() throws Exception {
         Page<PropertyEntity> page = new PageImpl<>(List.of(entity));
-        when(propertyService.findAll(any(Pageable.class))).thenReturn(page);
+        when(propertyService.findAll(any(), any(), any(), any(), any(), any(Pageable.class))).thenReturn(page);
 
         mockMvc.perform(get("/property/"))
                 .andExpect(status().isOk())
@@ -162,7 +162,7 @@ class PropertyControllerTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     void findAll_shouldReturn200_whenAdminRole() throws Exception {
-        when(propertyService.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
+        when(propertyService.findAll(any(), any(), any(), any(), any(), any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
 
         mockMvc.perform(get("/property/"))
                 .andExpect(status().isOk());
@@ -172,7 +172,7 @@ class PropertyControllerTest {
     @WithMockUser(roles = "ADMIN")
     void findAll_shouldForwardPaginationParamsToService() throws Exception {
         ArgumentCaptor<Pageable> captor = ArgumentCaptor.forClass(Pageable.class);
-        when(propertyService.findAll(captor.capture())).thenReturn(new PageImpl<>(List.of(entity)));
+        when(propertyService.findAll(any(), any(), any(), any(), any(), captor.capture())).thenReturn(new PageImpl<>(List.of(entity)));
 
         mockMvc.perform(get("/property/")
                         .param("page", "2")
@@ -186,7 +186,7 @@ class PropertyControllerTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     void findAll_shouldReturnEmptyPage_whenNoPropertiesExist() throws Exception {
-        when(propertyService.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
+        when(propertyService.findAll(any(), any(), any(), any(), any(), any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
 
         mockMvc.perform(get("/property/"))
                 .andExpect(status().isOk())
@@ -365,7 +365,7 @@ class PropertyControllerTest {
     @Test
     @WithMockUser(roles = "BROKER")
     void findAll_shouldReturn200_whenBrokerRole() throws Exception {
-        when(propertyService.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of(entity)));
+        when(propertyService.findAll(any(), any(), any(), any(), any(), any(Pageable.class))).thenReturn(new PageImpl<>(List.of(entity)));
 
         mockMvc.perform(get("/property/"))
                 .andExpect(status().isOk());
