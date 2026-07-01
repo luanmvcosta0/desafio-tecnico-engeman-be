@@ -1,16 +1,19 @@
 package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.service;
 
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.dtos.PropertyDto;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.enums.Type;
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.model.PropertyEntity;
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.repository.PropertyRepository;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.specification.PropertySpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Service
 @RequiredArgsConstructor
@@ -28,8 +31,9 @@ public class PropertyService {
         return propertyRepository.save(property);
     }
 
-    public Page<PropertyEntity> findAll(Pageable pageable) {
-        return propertyRepository.findAll(pageable);
+    public Page<PropertyEntity> findAll(Type type, BigDecimal minPrice, BigDecimal maxPrice, Integer rooms, String name, Pageable pageable) {
+        Specification<PropertyEntity> specification = PropertySpecification.filters(type, minPrice, maxPrice, rooms, name);
+        return propertyRepository.findAll(specification, pageable);
     }
 
     public PropertyEntity findByName(String name) {

@@ -1,6 +1,7 @@
 package com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.controller;
 
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.dtos.PropertyDto;
+import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.enums.Type;
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.model.PropertyEntity;
 import com.luanmvcosta0.desafio_tecnico_engeman_be.modules.property.service.PropertyService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -45,12 +47,17 @@ public class PropertyController {
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public Page<PropertyEntity> findAll(
+            @RequestParam(required = false) Type type,
+            @RequestParam(required = false) BigDecimal minPrice,
+            @RequestParam(required = false) BigDecimal maxPrice,
+            @RequestParam(required = false) Integer rooms,
+            @RequestParam(required = false) String name,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sortBy
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
-        return propertyService.findAll(pageable);
+        return propertyService.findAll(type, minPrice, maxPrice, rooms, name, pageable);
     }
 
     @Operation(summary = "Buscar por nome", description = "Busca um imóvel pelo nome")
